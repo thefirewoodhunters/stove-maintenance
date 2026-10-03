@@ -1,0 +1,12 @@
+{
+  "name": "薪ストーブ メンテナンス管理",
+  "short_name": "薪ストーブ管理",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f3ef",
+  "theme_color": "#1d2721",
+  "lang": "ja",
+  "icons": [
+    {"src":"./logo.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
