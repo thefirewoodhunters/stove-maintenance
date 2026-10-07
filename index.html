@@ -3,42 +3,38 @@
 :root{--bg:#f5f3ef;--card:#fff;--ink:#1f2822;--muted:#778078;--line:#e2e0da;--green:#385445;--green2:#dfe9e1;--orange:#b56b2b;--red:#a84c3c;--shadow:0 4px 18px #0000000d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;padding-bottom:86px}button,input,select,textarea{font:inherit}button{border:0}.app{max-width:760px;margin:auto}.top{position:sticky;top:0;z-index:5;background:#1d2721;color:white;padding:calc(12px + env(safe-area-inset-top)) 16px 12px}.toprow{display:flex;justify-content:space-between;align-items:center}.title{font-weight:800;font-size:19px}.sub{font-size:11px;color:#bdc7bf;margin-top:2px}.iconbtn{background:#ffffff18;color:#fff;border-radius:12px;padding:10px 12px}.main{padding:14px}.view{display:none}.view.active{display:block}.hero{background:linear-gradient(135deg,#314a3a,#203126);color:#fff;border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}.hero h1{font-size:23px;margin:0 0 4px}.hero p{margin:0;color:#d8e1da;font-size:13px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0}.stat,.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}.stat b{display:block;font-size:23px}.stat span{font-size:12px;color:var(--muted)}.section{font-size:16px;font-weight:800;margin:18px 2px 9px}.row{display:flex;gap:9px;align-items:center}.between{justify-content:space-between}.search{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:10px;outline:none}.btn{min-height:46px;border-radius:14px;padding:0 15px;font-weight:700;cursor:pointer}.primary{background:var(--green);color:#fff}.light{background:var(--green2);color:var(--green)}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#f8e6e2;color:var(--red)}.full{width:100%}.customer{margin-bottom:10px}.customer h3{margin:0 0 4px;font-size:16px}.customer p{margin:0;color:var(--muted);font-size:12px}.pill{display:inline-block;background:#eef1ee;color:#526258;border-radius:999px;padding:5px 8px;font-size:11px}.pill.warn{background:#fff0df;color:#a45d20}.pill.over{background:#f9e4df;color:#a54838}.schedule{border-left:4px solid var(--green);padding-left:12px}.schedule.overdue{border-left-color:var(--red)}.schedule h3{margin:0 0 5px;font-size:15px}.schedule small{color:var(--muted)}.fab{position:fixed;z-index:6;right:16px;bottom:78px;background:#b56b2b;color:#fff;border-radius:999px;padding:14px 18px;font-weight:800;box-shadow:0 7px 22px #0003}.bottom{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:8px max(10px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.bottom button{background:none;color:#68716b;font-size:11px;padding:6px}.bottom button.active{color:var(--green);font-weight:800}.bottom .ico{font-size:19px;display:block;margin-bottom:2px}.form label{display:block;font-size:12px;color:#5f6862;margin:13px 2px 6px}.form input,.form select,.form textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px;outline:none}.form textarea{min-height:100px;resize:vertical}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{padding:10px 13px;border:1px solid var(--line);border-radius:999px;background:#fff}.chip.sel{background:var(--green);color:#fff;border-color:var(--green)}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.photo-grid img{width:100%;aspect-ratio:1;border-radius:10px;object-fit:cover}.back{margin-bottom:10px}.history{position:relative;padding-left:18px}.history:before{content:"";position:absolute;left:5px;top:3px;bottom:3px;width:2px;background:#d7ddd8}.record{position:relative;margin-bottom:11px}.record:before{content:"";position:absolute;left:-17px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--green)}.record h3{margin:0;font-size:14px}.record p{margin:5px 0;color:#5f6862;font-size:12px}.record .compare{background:#f3f5f2;border-radius:10px;padding:8px;margin-top:6px}.barrow{display:grid;grid-template-columns:58px 1fr 48px;gap:7px;align-items:center;font-size:11px;margin:8px 0}.bar{height:9px;background:#e7e9e5;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);border-radius:99px}.empty{text-align:center;color:var(--muted);padding:28px 10px}.modal{display:none;position:fixed;inset:0;background:#0006;z-index:20;padding:16px;overflow:auto}.modal.show{display:block}.sheet{background:var(--bg);border-radius:20px;margin:20px auto;max-width:680px;padding:16px 14px 25px}.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 14px;border-radius:999px;font-size:12px;display:none;z-index:30}.toast.show{display:block}.muted{color:var(--muted)}.small{font-size:12px}@media(min-width:700px){.bottom{max-width:760px;margin:auto}.fab{right:calc((100vw - 760px)/2 + 16px)}}
 
 @media print{
- body{background:#fff!important;padding:0!important;color:#222!important;margin:0!important}
- body > *:not(#printArea){display:none!important}
- #printArea{display:block!important;visibility:visible!important;position:static!important;left:auto!important;top:auto!important;width:100%!important;box-sizing:border-box;padding:18px 22px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;background:#fff!important;color:#222!important}
- #printArea *{visibility:visible!important}
- #printArea .report-head{display:flex;align-items:center;gap:14px;border-bottom:2px solid #333;padding-bottom:10px;margin-bottom:12px}
- #printArea .report-logo{width:72px;height:72px;object-fit:contain}
- #printArea .report-title{font-size:23px;font-weight:700;margin:0}
- #printArea .report-sub{font-size:11px;color:#666;margin-top:3px}
- #printArea .customer-box{border:1px solid #bbb;padding:10px 12px;margin:10px 0 14px}
- #printArea .customer-name{font-size:18px;font-weight:700;margin-bottom:4px}
- #printArea .customer-line{font-size:12px;line-height:1.6}
- #printArea .summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin:10px 0 14px}
- #printArea .comparison-box{border:1px solid #999;padding:9px 10px;margin:10px 0 14px;background:#fafafa;break-inside:avoid}
- #printArea .comparison-title{font-size:13px;font-weight:700;margin-bottom:7px}
- #printArea .comparison-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;font-size:10px;line-height:1.5}
- #printArea .comparison-grid>div{border:1px solid #ccc;padding:7px;background:#fff}
- #printArea .summary-box{border:1px solid #bbb;padding:8px;text-align:center}
- #printArea .summary-label{font-size:10px;color:#666}
- #printArea .summary-value{font-size:16px;font-weight:700;margin-top:2px}
- #printArea h2{font-size:15px;margin:15px 0 7px;border-bottom:1px solid #888;padding-bottom:4px}
- #printArea .precord{border:1px solid #ccc;padding:9px;margin:8px 0;break-inside:avoid}
- #printArea .precord h3{margin:0 0 5px;font-size:13px}
- #printArea .precord p{margin:3px 0;font-size:11px;white-space:pre-wrap;line-height:1.45}
- #printArea .pphotos{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px}
- #printArea .pphotos img{width:100%;height:145px;object-fit:cover;border:1px solid #ccc}
- #printArea .report-footer{font-size:9px;color:#777;margin-top:14px;text-align:right}
-}
-
-@media print{
- #printArea .report-page{page-break-after:always;break-after:page;min-height:250mm;box-sizing:border-box;padding-bottom:20mm}
- #printArea .page-break{page-break-before:always;break-before:page}
- #printArea .official-footer{margin-top:18mm;padding-top:8px;border-top:1px solid #999;font-size:10px;line-height:1.7;text-align:left}
- #printArea .closing{font-size:12px;line-height:1.8;margin-top:4mm}
- #printArea .comparison-date{font-size:11px;margin:4px 0 8px}
-}
-</style></head><body><div class="app">
+ body{background:#fff!important;padding:0!important;margin:0!important;color:#222!important}
+ body>*:not(#printArea){display:none!important}
+ #printArea{display:block!important;position:static!important;width:100%!important;padding:0!important;background:#fff!important;color:#222!important;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
+ #printArea *{box-sizing:border-box}
+ .old-page{width:100%;min-height:250mm;padding:16mm 14mm 13mm;position:relative;break-after:page;page-break-after:always}
+ .old-page:last-child{break-after:auto;page-break-after:auto}
+ .old-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #333;padding-bottom:5mm;margin-bottom:5mm}
+ .old-head h1{font-size:21px;margin:0 0 3mm;font-weight:800;letter-spacing:.02em}
+ .old-sub{font-size:12px;color:#333}
+ .old-logo{width:72mm;height:22mm;object-fit:contain;object-position:right center}
+ .old-box{border:1px solid #ccc;border-radius:4mm;padding:5mm;margin-bottom:4mm;break-inside:avoid}
+ .old-box h2{font-size:18px;margin:0 0 5mm;font-weight:800}
+ .old-info{font-size:13px;line-height:2.05}
+ .old-customer h2{font-size:19px;margin-bottom:4mm}
+ .old-customer{font-size:13px;line-height:1.8}
+ .old-date{font-size:12px;margin-bottom:5mm}
+ .old-compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;font-size:12px;line-height:1.65}
+ .old-compare-grid>div{min-width:0}
+ .old-compare-grid b{font-size:13px}
+ .old-compare-grid span{color:#a84c3c}
+ .old-detail{font-size:12px;line-height:1.75;margin-top:5mm}
+ .old-record{border:1px solid #ccc;border-radius:4mm;padding:4mm;margin:4mm 0;break-inside:avoid}
+ .old-record-grid{display:grid;grid-template-columns:1fr 1fr;gap:7mm;font-size:12px;line-height:1.55}
+ .old-record-grid b{font-size:13px}
+ .old-label{font-weight:700;margin-top:3mm}
+ .old-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-top:4mm}
+ .old-photos img{width:100%;height:42mm;object-fit:cover;border:1px solid #ccc}
+ .old-footer{border-top:1px solid #bbb;padding-top:4mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:9px;line-height:1.55;margin-top:6mm}
+ .old-footer .old-logo{width:55mm;height:18mm}
+ .old-message{font-size:12px;line-height:1.7;margin-top:45mm}
+ @page{size:A4;margin:0}
+}</style></head><body><div class="app">
 <header class="top"><div class="toprow"><div><div class="title">🔥 薪ストーブ管理</div><div class="sub">メンテナンス・薪・煤・写真をまとめて管理</div><div id="storageStatus" class="sub"></div></div><button class="iconbtn" onclick="showView('dashboard')">⌂</button></div></header>
 <main class="main">
 <section id="dashboard" class="view active"><div class="hero"><h1 id="greeting">おつかれさまです</h1><p>今日の予定と、お客様のメンテナンス状況を確認できます。</p></div><div class="stats"><div class="stat"><b id="statCustomers">0</b><span>登録顧客</span></div><div class="stat"><b id="statMonth">0</b><span>今月の予定</span></div><div class="stat"><b id="statWood">0</b><span>今シーズンの薪</span></div><div class="stat"><b id="statSoot">0 g</b><span>今シーズンの煤</span></div></div><div class="card" style="margin:14px 0"><div class="row between" style="gap:10px"><div><b>機種変更・データ管理</b><div class="small muted" style="margin-top:4px">顧客・履歴・写真をバックアップできます</div></div><span class="pill">安心保存</span></div><div class="grid2" style="margin-top:10px"><button class="btn light" onclick="backupData()">⬇ データを書き出す</button><button class="btn ghost" onclick="document.getElementById('restoreFile').click()">⬆ データを復元する</button></div><div class="small muted" style="margin-top:8px">機種変更の前に「データを書き出す」を行い、新しいiPhoneで「データを復元する」を使ってください。</div></div><div class="section">今日・近日の予定</div><div id="scheduleList"></div><div class="section">薪・煤の推移</div><div class="card" id="trend"></div></section>
@@ -130,80 +126,36 @@ function printCustomerPDF(customerId,mode='customer'){
   const rs=recordsFor(customerId);
   const escP=s=>esc(s||'');
   const last=rs[0];
-  let lastYearRec=null;
+  let prev=null;
   if(last&&last.date){
-    const targetYear=String(+last.date.slice(0,4)-1);
-    const candidates=rs.filter(r=>r.date&&r.date.slice(0,4)===targetYear);
+    const y=String(+last.date.slice(0,4)-1);
+    const candidates=rs.filter(r=>r.date&&r.date.slice(0,4)===y);
     if(candidates.length){
-      const target=new Date(last.date+'T00:00:00').getTime();
-      lastYearRec=candidates.sort((a,b)=>Math.abs(new Date(a.date+'T00:00:00').getTime()-target)-Math.abs(new Date(b.date+'T00:00:00').getTime()-target))[0];
+      const t=new Date(last.date+'T00:00:00').getTime();
+      prev=candidates.sort((a,b)=>Math.abs(new Date(a.date+'T00:00:00').getTime()-t)-Math.abs(new Date(b.date+'T00:00:00').getTime()-t))[0];
     }
   }
-  const current=last||{};
-  const sootDiff=last&&lastYearRec?(+current.soot||0)-(+lastYearRec.soot||0):0;
-  const sameUnit=last&&lastYearRec&&current.woodUnit===lastYearRec.woodUnit;
-  const woodDiff=last&&lastYearRec?(+current.wood||0)-(+lastYearRec.wood||0):0;
-  const perM3=r=>r&&r.woodUnit==='㎥'&&(+r.wood||0)>0?((+r.soot||0)/(+r.wood||0)).toFixed(0)+' g/㎥':'—';
-  const diffText=n=>n>0?'+'+n:n;
-  const footer=`<div class="official-footer"><div>〒010-0825 秋田県秋田市柳田字境田135</div><div>TEL:090-2366-5465</div><div>bonfireaddiction@gmail.com</div></div>`;
-  const comparison=`${last&&lastYearRec?`<div class="comparison-box">
-      <div class="comparison-title">${mode==='internal'?'直近と前年の比較':'昨年との比較'}</div>
-      <div class="comparison-date">${mode==='internal'?'前年実施日':'昨年の実施日'}：${fmt(lastYearRec.date)} ／ 今回：${fmt(current.date)}</div>
-      <div class="comparison-grid">
-        <div><b>煤</b><br>${mode==='internal'?'前年':'昨年'} ${lastYearRec.soot||0} g<br>今回 ${current.soot||0} g<br>差：${diffText(sootDiff.toFixed(0))} g</div>
-        <div><b>薪1㎥あたりの煤</b><br>${mode==='internal'?'前年':'昨年'} ${perM3(lastYearRec)}<br>今回 ${perM3(current)}</div>
-        <div><b>薪</b><br>${mode==='internal'?'前年':'昨年'} ${lastYearRec.wood||0} ${escP(lastYearRec.woodUnit)}<br>今回 ${current.wood||0} ${escP(current.woodUnit)}<br>${sameUnit?'差：'+diffText(woodDiff.toFixed(1))+' '+escP(current.woodUnit):'差：単位が異なるため比較なし'}</div>
-      </div>
-    </div>`:`<div class="comparison-box"><div class="comparison-title">${mode==='internal'?'直近と前年の比較':'昨年との比較'}</div><div class="small">前年に該当するメンテナンス記録がありません。</div></div>`}`;
-
-  const recordBlock=r=>{
-    const photos=(r.photos||[]).filter(Boolean).map(p=>`<img src="${p}" alt="写真">`).join('');
-    return `<div class="precord">
-      <h3>${fmt(r.date)} ${r.time||''}</h3>
-      <p>煤 ${r.soot||0} g</p>
-      <p>薪1㎥あたりの煤 ${perM3(r)}</p>
-      <p>薪 ${r.wood||0} ${escP(r.woodUnit)}</p>
-      <p>薪の種類：${escP(r.woodType||'—')}</p>
-      <p>内容：${escP(r.content||'—')}</p>
-      <p>次回：${r.nextDate?fmt(r.nextDate):'—'}</p>
-      ${mode==='internal'?`<p>内部メモ：${escP(r.memo||'—')}</p>`:''}
-      ${photos?`<div class="pphotos">${photos}</div>`:''}
-    </div>`;
-  };
-
+  const perM3=r=>(r&&r.woodUnit==='㎥'&&(+r.wood||0)>0)?((+r.soot||0)/(+r.wood||0)).toFixed(0)+' g/㎥':'—';
+  const diff=(a,b,key)=>((+a?.[key]||0)-(+b?.[key]||0));
+  const photosHtml=r=>(r?.photos||[]).filter(Boolean).map(p=>`<img src="${p}" alt="写真">`).join('');
+  const issued=fmt(today());
+  const contact=`<div class="old-contact"><div>〒010-0825 秋田県秋田市柳田字境田135</div><div>TEL:090-2366-5465</div><div>bonfireaddiction@gmail.com</div></div>`;
+  const logo=`<img class="old-logo" src="./logo.png" alt="THE FIREWOOD HUNTERS">`;
   let html='';
   if(mode==='internal'){
-    html=`<div class="report-page">
-      <div class="report-head"><img class="report-logo" src="./logo.png" alt="ロゴ"><div><div class="report-title">薪ストーブ メンテナンス詳細カルテ</div><div class="report-sub">社内管理用・発行日：${fmt(today())}</div></div></div>
-      <h2>顧客カルテ</h2>
-      <div class="customer-box"><div class="customer-name">氏名：${escP(c.name)}</div><div>住所：${escP(c.address||'—')}</div><div>電話：${escP(c.phone||'—')}</div><div>メール：${escP(c.email||'—')}</div><div>メーカー：${escP(c.maker||'—')}　型式：${escP(c.model||'—')}</div><div>設置年：${escP(c.installYear||'—')}</div><div>顧客メモ：${escP(c.memo||'—')}</div></div>
-      ${comparison}
-    </div>
-    <div class="report-page page-break">
-      <h2>メンテナンス履歴（全件）</h2>${rs.length?rs.map(recordBlock).join(''):'<p>メンテナンス履歴はありません。</p>'}
-      ${footer}
-    </div>`;
+    const history=rs.map(r=>`<div class="old-record"><div class="old-record-grid"><div><b>${fmt(r.date)} ${r.time||''}</b><div class="old-label">煤</div><div>${r.soot||0} g</div><div class="old-label">薪</div><div>${r.wood||0} ${escP(r.woodUnit)}</div></div><div><div class="old-label">薪1㎥あたりの煤</div><div>${perM3(r)}</div><div class="old-label">薪の種類</div><div>${escP(r.woodType)||'—'}</div></div></div><div class="old-detail"><div>内容：<br>${escP(r.content)||'—'}</div><div>次回：${r.nextDate?fmt(r.nextDate):'—'}</div><div>内部メモ：<br>${escP(r.memo)||'—'}</div></div>${photosHtml(r)?`<div class="old-photos">${photosHtml(r)}</div>`:''}</div>`).join('') || '<div class="old-record">メンテナンス記録はありません。</div>';
+    const cmp=prev?`<section class="old-box"><h2>直近と前年の比較</h2><div class="old-date">前年実施日：${fmt(prev.date)} ／ 今回：${fmt(last.date)}</div><div class="old-compare-grid"><div><b>煤</b><br>前年 ${prev.soot||0} g<br>今回 ${last.soot||0} g<br><span>差：${diff(last,prev,'soot')>0?'+':''}${diff(last,prev,'soot').toFixed(0)} g</span></div><div><b>薪1㎥あたりの煤</b><br>前年 ${perM3(prev)}<br>今回 ${perM3(last)}</div><div><b>薪</b><br>前年 ${prev.wood||0} ${escP(prev.woodUnit)}<br>今回 ${last.wood||0} ${escP(last.woodUnit)}<br><span>差：${last.woodUnit===prev.woodUnit?(diff(last,prev,'wood')>0?'+':'')+diff(last,prev,'wood').toFixed(1)+' '+escP(last.woodUnit):'比較なし'}</span></div></div></section>`:'';
+    html=`<div class="old-page"><header class="old-head"><div><h1>薪ストーブ メンテナンス詳細カルテ</h1><div class="old-sub">社内管理用・発行日：${issued}</div></div>${logo}</header><section class="old-box"><h2>顧客カルテ</h2><div class="old-info"><b>氏名：</b>${escP(c.name)}<br><b>住所：</b>${escP(c.address)||'—'}<br><b>電話：</b>${escP(c.phone)||'—'}<br><b>メール：</b>${escP(c.email)||'—'}<br><b>メーカー：</b>${escP(c.maker)||'—'}　<b>型式：</b>${escP(c.model)||'—'}<br><b>設置年：</b>${escP(c.installYear)||'—'}<br><b>顧客メモ：</b><br>${escP(c.memo)||'—'}</div></section>${cmp}</div><div class="old-page"><section class="old-box"><h2>メンテナンス履歴（全件）</h2>${history}</section><footer class="old-footer">${contact}${logo}</footer></div>`;
   }else{
-    html=`<div class="report-page">
-      <div class="report-head"><img class="report-logo" src="./logo.png" alt="ロゴ"><div><div class="report-title">薪ストーブ メンテナンス結果報告書</div><div class="report-sub">発行日：${fmt(today())}</div></div></div>
-      <div class="customer-box"><div class="customer-name">${escP(c.name)} 様</div><div>${escP(c.address||'—')}</div><div>${escP(c.maker||'—')} ${escP(c.model||'—')}</div></div>
-      <h2>今回のメンテナンス</h2>
-      ${last?recordBlock(last):'<p>メンテナンス記録はありません。</p>'}
-      ${comparison}
-    </div>
-    <div class="report-page page-break">
-      <p class="closing">今回のメンテナンス結果をご報告します。ご不明な点がありましたらお気軽にお問い合わせください。</p>
-      ${footer}
-    </div>`;
+    const cmp=prev?`<section class="old-box"><h2>昨年との比較</h2><div class="old-date">昨年の実施日：${fmt(prev.date)}</div><div class="old-compare-grid"><div><b>煤の量</b><br>昨年 ${prev.soot||0} g<br>今回 ${last?.soot||0} g<br><span>差：${last?((diff(last,prev,'soot')>0?'+':'')+diff(last,prev,'soot').toFixed(0)+' g'):'—'}</span></div><div><b>薪1㎥あたりの煤</b><br>昨年 ${perM3(prev)}<br>今回 ${perM3(last)}</div><div><b>薪の使用量</b><br>昨年 ${prev.wood||0} ${escP(prev.woodUnit)}<br>今回 ${last?.wood||0} ${escP(last?.woodUnit)}<br><span>差：${last&&last.woodUnit===prev.woodUnit?(diff(last,prev,'wood')>0?'+':'')+diff(last,prev,'wood').toFixed(1)+' '+escP(last.woodUnit):'比較なし'}</span></div></div></section>`:'';
+    const r=last||{};
+    html=`<div class="old-page"><header class="old-head"><div><h1>薪ストーブ メンテナンス結果報告書</h1><div class="old-sub">発行日：${issued}</div></div>${logo}</header><section class="old-box old-customer"><h2>${escP(c.name)} 様</h2><div>${escP(c.address)||'—'}</div><div>${escP(c.maker)||'—'} ${escP(c.model)||''}</div></section><section class="old-box"><h2>今回のメンテナンス</h2><div class="old-date"><b>実施日：</b>${r.date?fmt(r.date):'—'} ${r.time||''}</div><div class="old-compare-grid"><div><b>煤の量</b><br>${r.soot||0} g</div><div><b>薪1㎥あたりの煤</b><br>${perM3(r)}</div><div><b>薪の使用量</b><br>${r.wood||0} ${escP(r.woodUnit)}</div></div><div class="old-detail">薪の種類：${escP(r.woodType)||'—'}<br><br>実施内容：<br>${escP(r.content)||'—'}</div></section>${cmp}</div><div class="old-page"><section class="old-box old-message">今回のメンテナンス結果をご報告します。ご不明な点がありましたらお気軽にお問い合わせください。</section><footer class="old-footer">${contact}${logo}</footer></div>`;
   }
-  const area=document.getElementById('printArea');
-  area.innerHTML=html;
-  area.style.display='block';
-  const restore=()=>{area.style.display='none';window.removeEventListener('afterprint',restore);};
-  window.addEventListener('afterprint',restore,{once:true});
-  setTimeout(()=>{if(area.style.display==='block') restore();},15000);
+  const area=document.getElementById('printArea'); area.innerHTML=html; area.style.display='block';
   const imgs=[...area.querySelectorAll('img')];
   Promise.all(imgs.map(img=>new Promise(resolve=>{if(img.complete)resolve();else{img.onload=resolve;img.onerror=resolve;}}))).then(()=>setTimeout(()=>window.print(),350));
+  const restore=()=>{area.style.display='none';window.removeEventListener('afterprint',restore)};
+  window.addEventListener('afterprint',restore,{once:true});
 }
 
 function modal(html){document.getElementById('modalBody').innerHTML=html;document.getElementById('modal').classList.add('show')}function closeModal(){document.getElementById('modal').classList.remove('show')}function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
