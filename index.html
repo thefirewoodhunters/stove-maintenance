@@ -3,63 +3,37 @@
 :root{--bg:#f5f3ef;--card:#fff;--ink:#1f2822;--muted:#778078;--line:#e2e0da;--green:#385445;--green2:#dfe9e1;--orange:#b56b2b;--red:#a84c3c;--shadow:0 4px 18px #0000000d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;padding-bottom:86px}button,input,select,textarea{font:inherit}button{border:0}.app{max-width:760px;margin:auto}.top{position:sticky;top:0;z-index:5;background:#1d2721;color:white;padding:calc(12px + env(safe-area-inset-top)) 16px 12px}.toprow{display:flex;justify-content:space-between;align-items:center}.title{font-weight:800;font-size:19px}.sub{font-size:11px;color:#bdc7bf;margin-top:2px}.iconbtn{background:#ffffff18;color:#fff;border-radius:12px;padding:10px 12px}.main{padding:14px}.view{display:none}.view.active{display:block}.hero{background:linear-gradient(135deg,#314a3a,#203126);color:#fff;border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}.hero h1{font-size:23px;margin:0 0 4px}.hero p{margin:0;color:#d8e1da;font-size:13px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0}.stat,.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}.stat b{display:block;font-size:23px}.stat span{font-size:12px;color:var(--muted)}.section{font-size:16px;font-weight:800;margin:18px 2px 9px}.row{display:flex;gap:9px;align-items:center}.between{justify-content:space-between}.search{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:10px;outline:none}.btn{min-height:46px;border-radius:14px;padding:0 15px;font-weight:700;cursor:pointer}.primary{background:var(--green);color:#fff}.light{background:var(--green2);color:var(--green)}.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.danger{background:#f8e6e2;color:var(--red)}.full{width:100%}.customer{margin-bottom:10px}.customer h3{margin:0 0 4px;font-size:16px}.customer p{margin:0;color:var(--muted);font-size:12px}.pill{display:inline-block;background:#eef1ee;color:#526258;border-radius:999px;padding:5px 8px;font-size:11px}.pill.warn{background:#fff0df;color:#a45d20}.pill.over{background:#f9e4df;color:#a54838}.schedule{border-left:4px solid var(--green);padding-left:12px}.schedule.overdue{border-left-color:var(--red)}.schedule h3{margin:0 0 5px;font-size:15px}.schedule small{color:var(--muted)}.fab{position:fixed;z-index:6;right:16px;bottom:78px;background:#b56b2b;color:#fff;border-radius:999px;padding:14px 18px;font-weight:800;box-shadow:0 7px 22px #0003}.bottom{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:8px max(10px,env(safe-area-inset-left)) calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.bottom button{background:none;color:#68716b;font-size:11px;padding:6px}.bottom button.active{color:var(--green);font-weight:800}.bottom .ico{font-size:19px;display:block;margin-bottom:2px}.form label{display:block;font-size:12px;color:#5f6862;margin:13px 2px 6px}.form input,.form select,.form textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px;outline:none}.form textarea{min-height:100px;resize:vertical}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{padding:10px 13px;border:1px solid var(--line);border-radius:999px;background:#fff}.chip.sel{background:var(--green);color:#fff;border-color:var(--green)}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.photo-grid img{width:100%;aspect-ratio:1;border-radius:10px;object-fit:cover}.back{margin-bottom:10px}.history{position:relative;padding-left:18px}.history:before{content:"";position:absolute;left:5px;top:3px;bottom:3px;width:2px;background:#d7ddd8}.record{position:relative;margin-bottom:11px}.record:before{content:"";position:absolute;left:-17px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--green)}.record h3{margin:0;font-size:14px}.record p{margin:5px 0;color:#5f6862;font-size:12px}.record .compare{background:#f3f5f2;border-radius:10px;padding:8px;margin-top:6px}.barrow{display:grid;grid-template-columns:58px 1fr 48px;gap:7px;align-items:center;font-size:11px;margin:8px 0}.bar{height:9px;background:#e7e9e5;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);border-radius:99px}.empty{text-align:center;color:var(--muted);padding:28px 10px}.modal{display:none;position:fixed;inset:0;background:#0006;z-index:20;padding:16px;overflow:auto}.modal.show{display:block}.sheet{background:var(--bg);border-radius:20px;margin:20px auto;max-width:680px;padding:16px 14px 25px}.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#222;color:#fff;padding:10px 14px;border-radius:999px;font-size:12px;display:none;z-index:30}.toast.show{display:block}.muted{color:var(--muted)}.small{font-size:12px}@media(min-width:700px){.bottom{max-width:760px;margin:auto}.fab{right:calc((100vw - 760px)/2 + 16px)}}
 
 @media print{
- @page{size:A4;margin:0}
- html,body{margin:0!important;padding:0!important;background:#fff!important;color:#111!important}
- body>*:not(#printArea){display:none!important}
- #printArea{display:block!important;position:static!important;width:210mm!important;margin:0!important;padding:0!important;background:#fff!important;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif}
- #printArea *{box-sizing:border-box}
- .report-page{position:relative;width:210mm;min-height:297mm;padding:12mm 12mm 22mm;background:#fff;page-break-after:always;overflow:hidden}
- .report-page:last-child{page-break-after:auto}
- .report-head{display:flex;align-items:flex-start;gap:8mm;margin-bottom:5mm}
- .report-head .report-logo{width:31mm;height:20mm;object-fit:contain;object-position:left center;display:block}
- .report-head-main{flex:1}
- .report-title{font-size:20pt;font-weight:800;letter-spacing:.02em;margin:2mm 0 2mm;line-height:1.2}
- .report-sub{font-size:9pt;color:#333}
- .report-date{font-size:9pt;text-align:right;margin-top:1mm}
- .section-title{display:inline-block;background:#111;color:#fff;font-size:11pt;font-weight:800;padding:2mm 5mm;border-radius:2mm 2mm 0 0;margin-top:3mm}
- .box{border:1px solid #555;padding:4mm;margin:0 0 4mm}
- .customer-hero{display:grid;grid-template-columns:1fr 70mm;gap:7mm;align-items:center;border-bottom:1px solid #333;padding:4mm 5mm 5mm;margin-bottom:3mm}
- .customer-hero.no-photo{grid-template-columns:1fr}
- .customer-name{font-size:19pt;font-weight:800;border-bottom:1px solid #777;padding:0 0 3mm;margin-bottom:4mm}
- .customer-address{font-size:10.5pt;border-bottom:1px solid #777;padding-bottom:4mm;margin-bottom:4mm}
- .stove-name{font-size:15pt;font-weight:800;letter-spacing:.05em}
- .stove-photo{width:70mm;height:52mm;object-fit:cover;border:1px solid #999}
- .metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm;margin:3mm 0}
- .metric{border:1px solid #999;text-align:center;padding:4mm 2mm;min-height:25mm}
- .metric-label{font-size:9pt;font-weight:700}
- .metric-value{font-size:16pt;font-weight:800;margin-top:2mm}
- .meta-row{font-size:10pt;line-height:1.65;margin:1.5mm 0}
- .compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
- .compare-card{border:1px solid #999;padding:3mm;text-align:center}
- .compare-card h4{font-size:9pt;margin:0 0 2mm}
- .compare-card div{font-size:9pt;line-height:1.6}
- .red{color:#d60000;font-weight:800}
- .history-table{width:100%;border-collapse:collapse;font-size:8.5pt}
- .history-table th,.history-table td{border:1px solid #777;padding:2.5mm 2mm;vertical-align:top}
- .history-table th{font-weight:800;text-align:center;background:#fafafa}
- .history-table .datecell{width:23mm;text-align:center}
- .history-table .numcell{width:20mm;text-align:center}
- .history-table .photocell{width:37mm;text-align:center}
- .history-photo{width:31mm;height:31mm;object-fit:cover;border:1px solid #999;margin:1mm}
- .message{font-size:11pt;line-height:1.9;border:1px solid #777;padding:7mm;margin-top:7mm}
- .footer-contact{position:absolute;left:12mm;right:12mm;bottom:10mm;border:1px solid #555;display:grid;grid-template-columns:42mm 1fr;min-height:27mm;align-items:center}
- .footer-logo{width:36mm;height:22mm;object-fit:contain;margin:2mm 3mm}
- .contact-text{font-size:9.5pt;line-height:1.55}
- .contact-text .url{font-size:8pt;color:#333;word-break:break-all}
- .page-foot{position:absolute;left:12mm;right:12mm;bottom:3mm;display:flex;justify-content:space-between;font-size:7.5pt;color:#555}
- .internal-info{display:grid;grid-template-columns:1fr 1fr 58mm;border:1px solid #555}
- .internal-info>div{padding:3mm;border-right:1px solid #777;border-bottom:1px solid #777;font-size:9pt;min-height:11mm}
- .internal-info>div:nth-child(3n){border-right:0}
- .internal-info .full{grid-column:1/3}
- .internal-photo{grid-column:3;grid-row:1/4;display:flex;align-items:center;justify-content:center;border-bottom:0!important}
- .internal-photo img{width:50mm;height:40mm;object-fit:cover;border:1px solid #999}
- .small-note{font-size:8pt;color:#555}
- .spacer{height:2mm}
+ body{background:#fff;padding:0;color:#222}
+ body *{visibility:hidden}
+ #printArea,#printArea *{visibility:visible}
+ #printArea{position:absolute;left:0;top:0;width:100%;box-sizing:border-box;padding:18px 22px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;background:#fff}
+ #printArea .report-head{display:flex;align-items:center;gap:14px;border-bottom:2px solid #333;padding-bottom:10px;margin-bottom:12px}
+ #printArea .report-logo{width:72px;height:72px;object-fit:contain}
+ #printArea .report-title{font-size:23px;font-weight:700;margin:0}
+ #printArea .report-sub{font-size:11px;color:#666;margin-top:3px}
+ #printArea .customer-box{border:1px solid #bbb;padding:10px 12px;margin:10px 0 14px}
+ #printArea .customer-name{font-size:18px;font-weight:700;margin-bottom:4px}
+ #printArea .customer-line{font-size:12px;line-height:1.6}
+ #printArea .summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin:10px 0 14px}
+ #printArea .comparison-box{border:1px solid #999;padding:9px 10px;margin:10px 0 14px;background:#fafafa;break-inside:avoid}
+ #printArea .comparison-title{font-size:13px;font-weight:700;margin-bottom:7px}
+ #printArea .comparison-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;font-size:10px;line-height:1.5}
+ #printArea .comparison-grid>div{border:1px solid #ccc;padding:7px;background:#fff}
+ #printArea .summary-box{border:1px solid #bbb;padding:8px;text-align:center}
+ #printArea .summary-label{font-size:10px;color:#666}
+ #printArea .summary-value{font-size:16px;font-weight:700;margin-top:2px}
+ #printArea h2{font-size:15px;margin:15px 0 7px;border-bottom:1px solid #888;padding-bottom:4px}
+ #printArea .precord{border:1px solid #ccc;padding:9px;margin:8px 0;break-inside:avoid}
+ #printArea .precord h3{margin:0 0 5px;font-size:13px}
+ #printArea .precord p{margin:3px 0;font-size:11px;white-space:pre-wrap;line-height:1.45}
+ #printArea .pphotos{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px}
+ #printArea .pphotos img{width:100%;height:145px;object-fit:cover;border:1px solid #ccc}
+ #printArea .report-footer{font-size:9px;color:#777;margin-top:14px;text-align:right}
 }
 </style></head><body><div class="app">
 <header class="top"><div class="toprow"><div><div class="title">🔥 薪ストーブ管理</div><div class="sub">メンテナンス・薪・煤・写真をまとめて管理</div><div id="storageStatus" class="sub"></div></div><button class="iconbtn" onclick="showView('dashboard')">⌂</button></div></header>
 <main class="main">
-<section id="dashboard" class="view active"><div class="hero"><h1 id="greeting">おつかれさまです</h1><p>今日の予定と、お客様のメンテナンス状況を確認できます。</p></div><div class="stats"><div class="stat"><b id="statCustomers">0</b><span>登録顧客</span></div><div class="stat"><b id="statMonth">0</b><span>今月の予定</span></div><div class="stat"><b id="statWood">0</b><span>今シーズンの薪</span></div><div class="stat"><b id="statSoot">0 g</b><span>今シーズンの煤</span></div></div><div class="section">今日・近日の予定</div><div id="scheduleList"></div><div class="section">薪・煤の推移</div><div class="card" id="trend"></div></section>
+<section id="dashboard" class="view active"><div class="hero"><h1 id="greeting">おつかれさまです</h1><p>今日の予定と、お客様のメンテナンス状況を確認できます。</p></div><div class="stats"><div class="stat"><b id="statCustomers">0</b><span>登録顧客</span></div><div class="stat"><b id="statMonth">0</b><span>今月の予定</span></div><div class="stat"><b id="statWood">0</b><span>今シーズンの薪</span></div><div class="stat"><b id="statSoot">0 g</b><span>今シーズンの煤</span></div></div><div class="card" style="margin:14px 0"><div class="row between" style="gap:10px"><div><b>機種変更・データ管理</b><div class="small muted" style="margin-top:4px">顧客・履歴・写真をバックアップできます</div></div><span class="pill">安心保存</span></div><div class="grid2" style="margin-top:10px"><button class="btn light" onclick="backupData()">⬇ データを書き出す</button><button class="btn ghost" onclick="document.getElementById('restoreFile').click()">⬆ データを復元する</button></div><div class="small muted" style="margin-top:8px">機種変更の前に「データを書き出す」を行い、新しいiPhoneで「データを復元する」を使ってください。</div></div><div class="section">今日・近日の予定</div><div id="scheduleList"></div><div class="section">薪・煤の推移</div><div class="card" id="trend"></div></section>
 <section id="customers" class="view"><div class="row between"><div class="section">お客様</div><button class="btn primary" onclick="openCustomerForm()">＋ 新規</button></div><input id="search" class="search" placeholder="名前・住所・電話番号で検索" oninput="renderCustomers()"><div id="customerList"></div></section>
 <section id="customerDetail" class="view"></section>
 <section id="recordForm" class="view"></section>
@@ -67,7 +41,7 @@
 </main></div>
 <button class="fab" onclick="openRecordForm()">＋ メンテナンス</button>
 <nav class="bottom"><button id="nav-dashboard" class="active" onclick="showView('dashboard')"><span class="ico">⌂</span>ホーム</button><button id="nav-customers" onclick="showView('customers')"><span class="ico">👤</span>顧客</button><button id="nav-schedule" onclick="showView('schedule')"><span class="ico">📅</span>予定</button><button id="nav-recordForm" onclick="openRecordForm()"><span class="ico">＋</span>記録</button></nav>
-<div id="printArea" style="display:none"></div><div id="modal" class="modal"><div class="sheet" id="modalBody"></div></div><div id="toast" class="toast"></div>
+<input id="restoreFile" type="file" accept="application/json,.json" style="display:none" onchange="restoreData(this)"><div id="printArea" style="display:none"></div><div id="modal" class="modal"><div class="sheet" id="modalBody"></div></div><div id="toast" class="toast"></div>
 <script>
 const KEY='stoveApp';
 let storageOK=true;
@@ -149,40 +123,113 @@ function printCustomerPDF(customerId,mode='customer'){
   const rs=recordsFor(customerId);
   const escP=s=>esc(s||'');
   const last=rs[0];
+  // 「昨年」は、最新記録の日付から1年前の暦年にある記録のうち最も近いものを採用
   let lastYearRec=null;
   if(last&&last.date){
     const targetYear=String(+last.date.slice(0,4)-1);
     const candidates=rs.filter(r=>r.date&&r.date.slice(0,4)===targetYear);
     if(candidates.length){
       const target=new Date(last.date+'T00:00:00').getTime();
-      lastYearRec=candidates.slice().sort((a,b)=>Math.abs(new Date(a.date+'T00:00:00').getTime()-target)-Math.abs(new Date(b.date+'T00:00:00').getTime()-target))[0];
+      lastYearRec=candidates.sort((a,b)=>Math.abs(new Date(a.date+'T00:00:00').getTime()-target)-Math.abs(new Date(b.date+'T00:00:00').getTime()-target))[0];
     }
   }
-  const soot=(r)=>+r?.soot||0;
-  const wood=(r)=>+r?.wood||0;
-  const perM3=(r)=>r&&r.woodUnit==='㎥'&&wood(r)>0?(soot(r)/wood(r)).toFixed(0)+' g/㎥':'—';
-  const diffText=(n,unit='')=>(n>0?'+':'')+n.toFixed(unit==='g'?0:1)+' '+unit;
-  const totalSoot=rs.reduce((a,r)=>a+soot(r),0);
-  const logo='./logo.png';
-  const latestPhoto=(last?.photos||[]).filter(Boolean)[0]||'';
-  const photoHtml=latestPhoto?`<img class="stove-photo" src="${latestPhoto}" alt="メンテナンス写真">`:'';
-  const compareSection=last&&lastYearRec?`<div class="section-title">昨年との比較</div><div class="box"><div class="meta-row">昨年の実施日：${fmt(lastYearRec.date)}　／　今回：${fmt(last.date)}</div><div class="compare-grid"><div class="compare-card"><h4>煤の量</h4><div>昨年　${soot(lastYearRec)} g</div><div>今回　<span class="red">${soot(last)} g</span></div><div>差：<span class="red">${diffText(soot(last)-soot(lastYearRec),'g')}</span></div></div><div class="compare-card"><h4>薪1㎥あたりの煤</h4><div>昨年　${perM3(lastYearRec)}</div><div>今回　<span class="red">${perM3(last)}</span></div><div>${last.woodUnit==='㎥'&&lastYearRec.woodUnit==='㎥'&&wood(last)>0&&wood(lastYearRec)>0?`差：<span class="red">${diffText((soot(last)/wood(last))-(soot(lastYearRec)/wood(lastYearRec)),'g/㎥')}</span>`:'差：—'}</div></div><div class="compare-card"><h4>薪の使用量</h4><div>昨年　${wood(lastYearRec)} ${escP(lastYearRec.woodUnit)}</div><div>今回　${wood(last)} ${escP(last.woodUnit)}</div><div>${last.woodUnit===lastYearRec.woodUnit?`差：${diffText(wood(last)-wood(lastYearRec),last.woodUnit||'')}`:'差：単位が異なるため比較なし'}</div></div></div></div>`:`<div class="section-title">昨年との比較</div><div class="box"><div class="small-note">昨年の同じ暦年に該当するメンテナンス記録がありません。</div></div>`;
-  const footer=(page,total)=>`<div class="footer-contact"><img class="footer-logo" src="${logo}" alt="ロゴ"><div class="contact-text">〒010-0825 秋田県秋田市柳田字境田135<br>TEL:090-2366-5465<br>bonfireaddiction@gmail.com</div></div><div class="page-foot"><span>https://thefirewoodhunters.github.io/stove-maintenance/</span><span>${fmt(today())}　 ${page} / ${total} ページ</span></div>`;
-  const currentMetrics=last?`<div class="metric-grid"><div class="metric"><div class="metric-label">煤の量</div><div class="metric-value">${soot(last)} g</div></div><div class="metric"><div class="metric-label">薪1㎥あたりの煤</div><div class="metric-value">${perM3(last)}</div></div><div class="metric"><div class="metric-label">薪の使用量</div><div class="metric-value">${wood(last)} ${escP(last.woodUnit)}</div></div></div>`:'';
-  const historyRows=rs.map(r=>{
-    const pics=(r.photos||[]).filter(Boolean).map(p=>`<img class="history-photo" src="${p}" alt="写真">`).join('');
-    return `<tr><td class="datecell">${fmt(r.date)}<br>${escP(r.time||'')}</td><td class="numcell">${soot(r)} g</td><td class="numcell">${perM3(r)}</td><td class="numcell">${wood(r)} ${escP(r.woodUnit)}</td><td><b>薪の種類：</b>${escP(r.woodType)||'—'}<br><b>内　容：</b>${escP(r.content)||'—'}<br><b>次　回：</b>${r.nextDate?fmt(r.nextDate):'—'}<br>${mode==='internal'?`<b>内部メモ：</b>${escP(r.memo)||'—'}`:''}</td><td class="photocell">${pics||'—'}</td></tr>`;
-  }).join('');
-  const area=document.getElementById('printArea');
-  if(mode==='customer'){
-    area.innerHTML=`<div class="report-page"><div class="report-head"><img class="report-logo" src="${logo}" alt="ロゴ"><div class="report-head-main"><div class="report-title">薪ストーブ メンテナンス結果報告書</div><div class="report-date">発行日：${fmt(today())}</div></div></div><div class="customer-hero ${photoHtml?'':'no-photo'}"><div><div class="customer-name">${escP(c.name)} 様</div><div class="customer-address">${escP(c.address||'住所未登録')}</div><div class="stove-name">${escP(c.maker)} ${escP(c.model)}</div></div>${photoHtml}</div><div class="section-title">今回のメンテナンス</div><div class="box"><div class="meta-row">実施日：${last?fmt(last.date)+' '+escP(last.time||''): '—'}</div>${currentMetrics}<div class="meta-row">薪の種類：${last?escP(last.woodType)||'—':'—'}</div><div class="meta-row">実施内容：${last?escP(last.content)||'—':'—'}</div></div>${compareSection}<div class="message">今回のメンテナンス結果をご報告します。<br>ご不明な点がありましたらお気軽にお問い合わせください。</div>${footer(1,2)}</div><div class="report-page"><div class="report-head"><img class="report-logo" src="${logo}" alt="ロゴ"><div class="report-head-main"><div class="report-title">メンテナンス記録</div><div class="report-sub">${escP(c.name)} 様　${escP(c.maker)} ${escP(c.model)}</div></div></div><div class="section-title">メンテナンス履歴</div><div class="box"><table class="history-table"><thead><tr><th>実施日</th><th>煤</th><th>薪1㎥あたりの煤</th><th>薪</th><th>内容</th><th>写真</th></tr></thead><tbody>${historyRows||'<tr><td colspan="6">記録なし</td></tr>'}</tbody></table></div>${footer(2,2)}</div>`;
-  }else{
-    area.innerHTML=`<div class="report-page"><div class="report-head"><img class="report-logo" src="${logo}" alt="ロゴ"><div class="report-head-main"><div class="report-title">薪ストーブ メンテナンス詳細カルテ</div><div class="report-date">社内管理用・発行日：${fmt(today())}</div></div></div><div class="section-title">顧客カルテ</div><div class="internal-info"><div>氏名：${escP(c.name)}</div><div>メーカー：${escP(c.maker)}</div><div class="internal-photo">${photoHtml||'—'}</div><div>住所：${escP(c.address||'—')}</div><div>型式：${escP(c.model||'—')}</div><div>設置年：${escP(c.installYear||'—')}</div><div>電話：${escP(c.phone||'—')}</div><div>顧客メモ：${escP(c.note||'—')}</div><div>メール：${escP(c.email||'—')}</div></div>${compareSection}${footer(1,3)}</div><div class="report-page"><div class="report-head"><img class="report-logo" src="${logo}" alt="ロゴ"><div class="report-head-main"><div class="report-title">薪ストーブ メンテナンス詳細カルテ</div><div class="report-date">メンテナンス履歴（全件）</div></div></div><div class="section-title">メンテナンス履歴（全件）</div><div class="box"><table class="history-table"><thead><tr><th>実施日</th><th>煤</th><th>薪1㎥あたりの煤</th><th>薪</th><th>薪の種類・内容・次回・内部メモ</th><th>写真</th></tr></thead><tbody>${historyRows||'<tr><td colspan="6">記録なし</td></tr>'}</tbody></table></div>${footer(2,3)}</div><div class="report-page"><div class="report-head"><img class="report-logo" src="${logo}" alt="ロゴ"><div class="report-head-main"><div class="report-title">薪ストーブ メンテナンス詳細カルテ</div><div class="report-date">社内保管用</div></div></div><div class="message">顧客：${escP(c.name)} 様<br>記録件数：${rs.length} 件<br>累計煤：${totalSoot.toFixed(0)} g<br>最新の薪1㎥あたりの煤：${perM3(last)}</div>${footer(3,3)}</div>`;
+  let comparisonHtml='';
+  if(last&&lastYearRec){
+    const sootDiff=(+last.soot||0)-(+lastYearRec.soot||0);
+    const sameUnit=last.woodUnit===lastYearRec.woodUnit;
+    const woodDiff=(+last.wood||0)-(+lastYearRec.wood||0);
+    comparisonHtml=`<div class="comparison-box"><div class="comparison-title">昨年との比較</div><div class="comparison-grid"><div><b>今回</b><br>煤 ${last.soot||0} g<br>薪 ${last.wood||0} ${escP(last.woodUnit)}</div><div><b>昨年</b><br>煤 ${lastYearRec.soot||0} g<br>薪 ${lastYearRec.wood||0} ${escP(lastYearRec.woodUnit)}</div><div><b>差</b><br>煤 ${sootDiff>0?'+':''}${sootDiff.toFixed(0)} g<br>${sameUnit?`薪 ${woodDiff>0?'+':''}${woodDiff.toFixed(1)} ${escP(last.woodUnit)}`:'薪（単位が異なるため比較なし）'}</div></div></div>`;
+  }else if(last){
+    comparisonHtml=`<div class="comparison-box"><div class="comparison-title">昨年との比較</div><div class="small">昨年の同じ暦年に該当するメンテナンス記録がありません。</div></div>`;
   }
+  let sootPerM3='—';
+  if(last && last.woodUnit==='㎥' && (+last.wood||0)>0){
+    sootPerM3=((+last.soot||0)/(+last.wood||0)).toFixed(0)+' g/㎥';
+  }
+  const totalSoot=rs.reduce((a,r)=>a+(+r.soot||0),0);
+  const title=mode==='internal'?'薪ストーブ メンテナンス記録（社用）':'薪ストーブ メンテナンス報告書';
+  const sub=mode==='internal'?'社内管理用・詳細記録':'お客様控え';
+  const recordsHtml=rs.length?rs.map(r=>{
+    const photos=(r.photos||[]).filter(Boolean).map(p=>`<img src="${p}" alt="写真">`).join('');
+    let perM3='';
+    if(r.woodUnit==='㎥' && (+r.wood||0)>0){perM3=`<p>薪1㎥あたりの煤：${((+r.soot||0)/(+r.wood||0)).toFixed(0)} g/㎥</p>`;}
+    const memo=(mode==='internal'&&r.memo)?`<p>メモ：${escP(r.memo)}</p>`:'';
+    return `<div class="precord"><h3>${fmt(r.date)} ${r.time||''}</h3>
+      <p>煤：${r.soot||0} g　薪：${r.wood||0} ${escP(r.woodUnit)} ${escP(r.woodType)}</p>
+      ${perM3}
+      ${escP(r.content)?`<p>作業内容：${escP(r.content)}</p>`:''}
+      ${r.nextDate?`<p>次回メンテナンス予定：${fmt(r.nextDate)}</p>`:''}
+      ${memo}
+      ${photos?`<div class="pphotos">${photos}</div>`:''}
+    </div>`;
+  }).join(''):'<p>メンテナンス記録はありません。</p>';
+  const area=document.getElementById('printArea');
+  area.innerHTML=`<div class="report-head">
+      <img class="report-logo" src="./logo.png" alt="ロゴ">
+      <div><div class="report-title">${title}</div><div class="report-sub">${sub}</div></div>
+    </div>
+    <div class="customer-box">
+      <div class="customer-name">${escP(c.name)} 様</div>
+      <div class="customer-line">住所：${escP(c.address||'住所未登録')}</div>
+      <div class="customer-line">電話：${escP(c.phone)}　メール：${escP(c.email)}</div>
+      <div class="customer-line">ストーブ：${escP(c.maker)} ${escP(c.model)}${c.installYear?`　設置年：${escP(c.installYear)}`:''}</div>
+    </div>
+    ${comparisonHtml}
+    <div class="summary">
+      <div class="summary-box"><div class="summary-label">記録件数</div><div class="summary-value">${rs.length} 件</div></div>
+      <div class="summary-box"><div class="summary-label">累計煤</div><div class="summary-value">${totalSoot.toFixed(0)} g</div></div>
+      <div class="summary-box"><div class="summary-label">薪1㎥あたりの煤（最新）</div><div class="summary-value">${sootPerM3}</div></div>
+    </div>
+    <h2>メンテナンス内容</h2>${recordsHtml}
+    <div class="report-footer">作成日：${fmt(today())}　薪ストーブ管理</div>`;
   area.style.display='block';
-  requestAnimationFrame(()=>setTimeout(()=>{window.print();setTimeout(()=>{area.style.display='none';},800);},250));
+  const imgs=[...area.querySelectorAll('img')];
+  Promise.all(imgs.map(img=>new Promise(resolve=>{
+    if(img.complete)resolve(); else {img.onload=resolve;img.onerror=resolve;}
+  }))).then(()=>{
+    setTimeout(()=>{
+      window.print();
+      setTimeout(()=>{area.style.display='none';},500);
+    },100);
+  });
 }
-
+function backupData(){
+  try{
+    const payload={app:'stove-maintenance',version:1,exportedAt:new Date().toISOString(),data:{customers:data.customers,records:data.records}};
+    const json=JSON.stringify(payload);
+    const stamp=new Date().toISOString().slice(0,10).replaceAll('-','');
+    const file=new File([json],`薪ストーブ管理_バックアップ_${stamp}.json`,{type:'application/json'});
+    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+      navigator.share({title:'薪ストーブ管理 バックアップ',text:'薪ストーブ管理のデータバックアップ',files:[file]}).then(()=>toast('バックアップを共有しました')).catch(()=>{});
+      return;
+    }
+    const url=URL.createObjectURL(file),a=document.createElement('a');
+    a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast('バックアップを書き出しました');
+  }catch(e){alert('バックアップの作成に失敗しました。もう一度お試しください。');}
+}
+function restoreData(input){
+  const file=input.files&&input.files[0];
+  input.value='';
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const payload=JSON.parse(reader.result);
+      const d=payload&&payload.data?payload.data:payload;
+      if(!d||!Array.isArray(d.customers)||!Array.isArray(d.records))throw new Error('invalid');
+      if(!confirm('現在のデータをバックアップの内容に置き換えます。\n\n顧客・メンテナンス履歴・写真が復元されます。\nよろしいですか？'))return;
+      data={customers:d.customers,records:d.records};
+      if(storageOK){localStorage.setItem(KEY,JSON.stringify(data));}
+      selectedCustomer=null;
+      renderAll();
+      showView('dashboard');
+      toast('データを復元しました');
+    }catch(e){alert('このバックアップファイルは読み込めませんでした。\n「薪ストーブ管理」から書き出したJSONを選んでください。');}
+  };
+  reader.readAsText(file);
+}
 function modal(html){document.getElementById('modalBody').innerHTML=html;document.getElementById('modal').classList.add('show')}function closeModal(){document.getElementById('modal').classList.remove('show')}function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
 renderAll();
 const status=document.getElementById('storageStatus');
