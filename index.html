@@ -30,6 +30,14 @@
  #printArea .pphotos img{width:100%;height:145px;object-fit:cover;border:1px solid #ccc}
  #printArea .report-footer{font-size:9px;color:#777;margin-top:14px;text-align:right}
 }
+
+@media print{
+ #printArea .report-page{page-break-after:always;break-after:page;min-height:250mm;box-sizing:border-box;padding-bottom:20mm}
+ #printArea .page-break{page-break-before:always;break-before:page}
+ #printArea .official-footer{margin-top:18mm;padding-top:8px;border-top:1px solid #999;font-size:10px;line-height:1.7;text-align:left}
+ #printArea .closing{font-size:12px;line-height:1.8;margin-top:4mm}
+ #printArea .comparison-date{font-size:11px;margin:4px 0 8px}
+}
 </style></head><body><div class="app">
 <header class="top"><div class="toprow"><div><div class="title">🔥 薪ストーブ管理</div><div class="sub">メンテナンス・薪・煤・写真をまとめて管理</div><div id="storageStatus" class="sub"></div></div><button class="iconbtn" onclick="showView('dashboard')">⌂</button></div></header>
 <main class="main">
@@ -118,12 +126,10 @@ function renderDashboard(){const now=new Date(),ym=today().slice(0,7),season=sea
 function renderTrend(){const years={};data.records.forEach(r=>{const y=(r.date||'').slice(0,4);if(!y)return;if(!years[y])years[y]={wood:0,soot:0};years[y].wood+=+r.wood||0;years[y].soot+=+r.soot||0});const ys=Object.keys(years).sort().slice(-5);const maxW=Math.max(1,...ys.map(y=>years[y].wood)),maxS=Math.max(1,...ys.map(y=>years[y].soot));document.getElementById('trend').innerHTML=ys.length?ys.map(y=>`<div class="barrow"><b>${y}</b><div><div class="bar"><i style="width:${years[y].wood/maxW*100}%"></i></div><div class="small muted">薪 ${years[y].wood.toFixed(1)}</div></div><span>煤 ${years[y].soot.toFixed(0)}g</span></div>`).join(''):'<div class="empty">記録が増えると、薪と煤の推移がここに表示されます。</div>'}
 
 function printCustomerPDF(customerId,mode='customer'){
-  const c=data.customers.find(x=>x.id===customerId);
-  if(!c)return;
+  const c=data.customers.find(x=>x.id===customerId); if(!c)return;
   const rs=recordsFor(customerId);
   const escP=s=>esc(s||'');
   const last=rs[0];
-  // 「昨年」は、最新記録の日付から1年前の暦年にある記録のうち最も近いものを採用
   let lastYearRec=null;
   if(last&&last.date){
     const targetYear=String(+last.date.slice(0,4)-1);
@@ -133,105 +139,73 @@ function printCustomerPDF(customerId,mode='customer'){
       lastYearRec=candidates.sort((a,b)=>Math.abs(new Date(a.date+'T00:00:00').getTime()-target)-Math.abs(new Date(b.date+'T00:00:00').getTime()-target))[0];
     }
   }
-  let comparisonHtml='';
-  if(last&&lastYearRec){
-    const sootDiff=(+last.soot||0)-(+lastYearRec.soot||0);
-    const sameUnit=last.woodUnit===lastYearRec.woodUnit;
-    const woodDiff=(+last.wood||0)-(+lastYearRec.wood||0);
-    comparisonHtml=`<div class="comparison-box"><div class="comparison-title">昨年との比較</div><div class="comparison-grid"><div><b>今回</b><br>煤 ${last.soot||0} g<br>薪 ${last.wood||0} ${escP(last.woodUnit)}</div><div><b>昨年</b><br>煤 ${lastYearRec.soot||0} g<br>薪 ${lastYearRec.wood||0} ${escP(lastYearRec.woodUnit)}</div><div><b>差</b><br>煤 ${sootDiff>0?'+':''}${sootDiff.toFixed(0)} g<br>${sameUnit?`薪 ${woodDiff>0?'+':''}${woodDiff.toFixed(1)} ${escP(last.woodUnit)}`:'薪（単位が異なるため比較なし）'}</div></div></div>`;
-  }else if(last){
-    comparisonHtml=`<div class="comparison-box"><div class="comparison-title">昨年との比較</div><div class="small">昨年の同じ暦年に該当するメンテナンス記録がありません。</div></div>`;
-  }
-  let sootPerM3='—';
-  if(last && last.woodUnit==='㎥' && (+last.wood||0)>0){
-    sootPerM3=((+last.soot||0)/(+last.wood||0)).toFixed(0)+' g/㎥';
-  }
-  const totalSoot=rs.reduce((a,r)=>a+(+r.soot||0),0);
-  const title=mode==='internal'?'薪ストーブ メンテナンス記録（社用）':'薪ストーブ メンテナンス報告書';
-  const sub=mode==='internal'?'社内管理用・詳細記録':'お客様控え';
-  const recordsHtml=rs.length?rs.map(r=>{
+  const current=last||{};
+  const sootDiff=last&&lastYearRec?(+current.soot||0)-(+lastYearRec.soot||0):0;
+  const sameUnit=last&&lastYearRec&&current.woodUnit===lastYearRec.woodUnit;
+  const woodDiff=last&&lastYearRec?(+current.wood||0)-(+lastYearRec.wood||0):0;
+  const perM3=r=>r&&r.woodUnit==='㎥'&&(+r.wood||0)>0?((+r.soot||0)/(+r.wood||0)).toFixed(0)+' g/㎥':'—';
+  const diffText=n=>n>0?'+'+n:n;
+  const footer=`<div class="official-footer"><div>〒010-0825 秋田県秋田市柳田字境田135</div><div>TEL:090-2366-5465</div><div>bonfireaddiction@gmail.com</div></div>`;
+  const comparison=`${last&&lastYearRec?`<div class="comparison-box">
+      <div class="comparison-title">${mode==='internal'?'直近と前年の比較':'昨年との比較'}</div>
+      <div class="comparison-date">${mode==='internal'?'前年実施日':'昨年の実施日'}：${fmt(lastYearRec.date)} ／ 今回：${fmt(current.date)}</div>
+      <div class="comparison-grid">
+        <div><b>煤</b><br>${mode==='internal'?'前年':'昨年'} ${lastYearRec.soot||0} g<br>今回 ${current.soot||0} g<br>差：${diffText(sootDiff.toFixed(0))} g</div>
+        <div><b>薪1㎥あたりの煤</b><br>${mode==='internal'?'前年':'昨年'} ${perM3(lastYearRec)}<br>今回 ${perM3(current)}</div>
+        <div><b>薪</b><br>${mode==='internal'?'前年':'昨年'} ${lastYearRec.wood||0} ${escP(lastYearRec.woodUnit)}<br>今回 ${current.wood||0} ${escP(current.woodUnit)}<br>${sameUnit?'差：'+diffText(woodDiff.toFixed(1))+' '+escP(current.woodUnit):'差：単位が異なるため比較なし'}</div>
+      </div>
+    </div>`:`<div class="comparison-box"><div class="comparison-title">${mode==='internal'?'直近と前年の比較':'昨年との比較'}</div><div class="small">前年に該当するメンテナンス記録がありません。</div></div>`}`;
+
+  const recordBlock=r=>{
     const photos=(r.photos||[]).filter(Boolean).map(p=>`<img src="${p}" alt="写真">`).join('');
-    let perM3='';
-    if(r.woodUnit==='㎥' && (+r.wood||0)>0){perM3=`<p>薪1㎥あたりの煤：${((+r.soot||0)/(+r.wood||0)).toFixed(0)} g/㎥</p>`;}
-    const memo=(mode==='internal'&&r.memo)?`<p>メモ：${escP(r.memo)}</p>`:'';
-    return `<div class="precord"><h3>${fmt(r.date)} ${r.time||''}</h3>
-      <p>煤：${r.soot||0} g　薪：${r.wood||0} ${escP(r.woodUnit)} ${escP(r.woodType)}</p>
-      ${perM3}
-      ${escP(r.content)?`<p>作業内容：${escP(r.content)}</p>`:''}
-      ${r.nextDate?`<p>次回メンテナンス予定：${fmt(r.nextDate)}</p>`:''}
-      ${memo}
+    return `<div class="precord">
+      <h3>${fmt(r.date)} ${r.time||''}</h3>
+      <p>煤 ${r.soot||0} g</p>
+      <p>薪1㎥あたりの煤 ${perM3(r)}</p>
+      <p>薪 ${r.wood||0} ${escP(r.woodUnit)}</p>
+      <p>薪の種類：${escP(r.woodType||'—')}</p>
+      <p>内容：${escP(r.content||'—')}</p>
+      <p>次回：${r.nextDate?fmt(r.nextDate):'—'}</p>
+      ${mode==='internal'?`<p>内部メモ：${escP(r.memo||'—')}</p>`:''}
       ${photos?`<div class="pphotos">${photos}</div>`:''}
     </div>`;
-  }).join(''):'<p>メンテナンス記録はありません。</p>';
+  };
+
+  let html='';
+  if(mode==='internal'){
+    html=`<div class="report-page">
+      <div class="report-head"><img class="report-logo" src="./logo.png" alt="ロゴ"><div><div class="report-title">薪ストーブ メンテナンス詳細カルテ</div><div class="report-sub">社内管理用・発行日：${fmt(today())}</div></div></div>
+      <h2>顧客カルテ</h2>
+      <div class="customer-box"><div class="customer-name">氏名：${escP(c.name)}</div><div>住所：${escP(c.address||'—')}</div><div>電話：${escP(c.phone||'—')}</div><div>メール：${escP(c.email||'—')}</div><div>メーカー：${escP(c.maker||'—')}　型式：${escP(c.model||'—')}</div><div>設置年：${escP(c.installYear||'—')}</div><div>顧客メモ：${escP(c.memo||'—')}</div></div>
+      ${comparison}
+    </div>
+    <div class="report-page page-break">
+      <h2>メンテナンス履歴（全件）</h2>${rs.length?rs.map(recordBlock).join(''):'<p>メンテナンス履歴はありません。</p>'}
+      ${footer}
+    </div>`;
+  }else{
+    html=`<div class="report-page">
+      <div class="report-head"><img class="report-logo" src="./logo.png" alt="ロゴ"><div><div class="report-title">薪ストーブ メンテナンス結果報告書</div><div class="report-sub">発行日：${fmt(today())}</div></div></div>
+      <div class="customer-box"><div class="customer-name">${escP(c.name)} 様</div><div>${escP(c.address||'—')}</div><div>${escP(c.maker||'—')} ${escP(c.model||'—')}</div></div>
+      <h2>今回のメンテナンス</h2>
+      ${last?recordBlock(last):'<p>メンテナンス記録はありません。</p>'}
+      ${comparison}
+    </div>
+    <div class="report-page page-break">
+      <p class="closing">今回のメンテナンス結果をご報告します。ご不明な点がありましたらお気軽にお問い合わせください。</p>
+      ${footer}
+    </div>`;
+  }
   const area=document.getElementById('printArea');
-  area.innerHTML=`<div class="report-head">
-      <img class="report-logo" src="./logo.png" alt="ロゴ">
-      <div><div class="report-title">${title}</div><div class="report-sub">${sub}</div></div>
-    </div>
-    <div class="customer-box">
-      <div class="customer-name">${escP(c.name)} 様</div>
-      <div class="customer-line">住所：${escP(c.address||'住所未登録')}</div>
-      <div class="customer-line">電話：${escP(c.phone)}　メール：${escP(c.email)}</div>
-      <div class="customer-line">ストーブ：${escP(c.maker)} ${escP(c.model)}${c.installYear?`　設置年：${escP(c.installYear)}`:''}</div>
-    </div>
-    ${comparisonHtml}
-    <div class="summary">
-      <div class="summary-box"><div class="summary-label">記録件数</div><div class="summary-value">${rs.length} 件</div></div>
-      <div class="summary-box"><div class="summary-label">累計煤</div><div class="summary-value">${totalSoot.toFixed(0)} g</div></div>
-      <div class="summary-box"><div class="summary-label">薪1㎥あたりの煤（最新）</div><div class="summary-value">${sootPerM3}</div></div>
-    </div>
-    <h2>メンテナンス内容</h2>${recordsHtml}
-    <div class="report-footer">作成日：${fmt(today())}　薪ストーブ管理</div>`;
+  area.innerHTML=html;
   area.style.display='block';
-  // iPhone Safariでは、印刷ダイアログが開いた直後に印刷領域を非表示にすると
-  // プレビューが白紙になることがあるため、印刷完了まで非表示に戻さない。
   const restore=()=>{area.style.display='none';window.removeEventListener('afterprint',restore);};
   window.addEventListener('afterprint',restore,{once:true});
   setTimeout(()=>{if(area.style.display==='block') restore();},15000);
   const imgs=[...area.querySelectorAll('img')];
-  Promise.all(imgs.map(img=>new Promise(resolve=>{
-    if(img.complete)resolve(); else {img.onload=resolve;img.onerror=resolve;}
-  }))).then(()=>{
-    setTimeout(()=>window.print(),350);
-  });
+  Promise.all(imgs.map(img=>new Promise(resolve=>{if(img.complete)resolve();else{img.onload=resolve;img.onerror=resolve;}}))).then(()=>setTimeout(()=>window.print(),350));
 }
-function backupData(){
-  try{
-    const payload={app:'stove-maintenance',version:1,exportedAt:new Date().toISOString(),data:{customers:data.customers,records:data.records}};
-    const json=JSON.stringify(payload);
-    const stamp=new Date().toISOString().slice(0,10).replaceAll('-','');
-    const file=new File([json],`薪ストーブ管理_バックアップ_${stamp}.json`,{type:'application/json'});
-    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
-      navigator.share({title:'薪ストーブ管理 バックアップ',text:'薪ストーブ管理のデータバックアップ',files:[file]}).then(()=>toast('バックアップを共有しました')).catch(()=>{});
-      return;
-    }
-    const url=URL.createObjectURL(file),a=document.createElement('a');
-    a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
-    toast('バックアップを書き出しました');
-  }catch(e){alert('バックアップの作成に失敗しました。もう一度お試しください。');}
-}
-function restoreData(input){
-  const file=input.files&&input.files[0];
-  input.value='';
-  if(!file)return;
-  const reader=new FileReader();
-  reader.onload=()=>{
-    try{
-      const payload=JSON.parse(reader.result);
-      const d=payload&&payload.data?payload.data:payload;
-      if(!d||!Array.isArray(d.customers)||!Array.isArray(d.records))throw new Error('invalid');
-      if(!confirm('現在のデータをバックアップの内容に置き換えます。\n\n顧客・メンテナンス履歴・写真が復元されます。\nよろしいですか？'))return;
-      data={customers:d.customers,records:d.records};
-      if(storageOK){localStorage.setItem(KEY,JSON.stringify(data));}
-      selectedCustomer=null;
-      renderAll();
-      showView('dashboard');
-      toast('データを復元しました');
-    }catch(e){alert('このバックアップファイルは読み込めませんでした。\n「薪ストーブ管理」から書き出したJSONを選んでください。');}
-  };
-  reader.readAsText(file);
-}
+
 function modal(html){document.getElementById('modalBody').innerHTML=html;document.getElementById('modal').classList.add('show')}function closeModal(){document.getElementById('modal').classList.remove('show')}function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
 renderAll();
 const status=document.getElementById('storageStatus');
