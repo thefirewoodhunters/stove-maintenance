@@ -66,6 +66,45 @@ function save(){
   }
   renderAll();
 }
+function backupData(){
+  try{
+    const payload={app:'stove-maintenance',version:1,exportedAt:new Date().toISOString(),data:{customers:data.customers,records:data.records}};
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='薪ストーブ管理_バックアップ_'+today()+'.json';
+    a.style.display='none';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+    toast('バックアップの保存を開始しました。ファイルに保存されたか確認してください。');
+  }catch(e){
+    alert('データを書き出せませんでした。Safariでアプリを開き直して、もう一度お試しください。');
+  }
+}
+function restoreData(input){
+  const file=input.files&&input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const payload=JSON.parse(reader.result);
+      const d=payload&&payload.data?payload.data:payload;
+      if(!d||!Array.isArray(d.customers)||!Array.isArray(d.records))throw new Error('invalid');
+      if(!confirm('現在のデータをバックアップの内容に置き換えます。先に今のデータを書き出しましたか？'))return;
+      data={customers:d.customers,records:d.records};
+      localStorage.setItem(KEY,JSON.stringify(data));
+      storageOK=true;
+      renderAll();
+      alert('データを復元しました。');
+    }catch(e){alert('このバックアップファイルを読み込めませんでした。正しいJSONファイルを選んでください。');}
+    finally{input.value='';}
+  };
+  reader.onerror=()=>{alert('ファイルを読み込めませんでした。');input.value='';};
+  reader.readAsText(file);
+}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function today(){return new Date().toISOString().slice(0,10)}
